@@ -11,9 +11,9 @@
         tools:layout="@layout/fridge_fragment" />
     <fragment
         android:id="@+id/recipesFragment"
-        android:name="com.example.virtualfridge.ui.recipes.RecipesFragment"
+        android:name="com.example.virtualfridge.ui.search.SearchRecipesFragment"
         android:label="recipes_fragment"
-        tools:layout="@layout/recipes_fragment" />
+        tools:layout="@layout/search_recipes_fragment" />
     <fragment
         android:id="@+id/savedRecipesFragment"
         android:name="com.example.virtualfridge.ui.saved.SavedRecipesFragment"
