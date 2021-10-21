@@ -1,5 +1,6 @@
 package com.example.virtualfridge.ui.auth
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -7,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.virtualfridge.databinding.ActivityAuthBinding
 import com.example.virtualfridge.other.Status
+import com.example.virtualfridge.ui.FridgeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,10 +22,13 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //
+        if (viewModel.isLoggedIn()) {
+            redirectLogin()
+        }
+
 
         subscribeToObservers()
-        viewModel.isLoggedIn()
-
         binding.btnLogin.setOnClickListener {
             val email = binding.etLoginEmail.text.toString()
             val password = binding.etLoginPassword.text.toString()
@@ -49,6 +54,7 @@ class AuthActivity : AppCompatActivity() {
                     binding.loginProgressBar.visibility = View.GONE
                     val message = result.message ?: "Successfully logged in"
                     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                    redirectLogin()
                 }
                 Status.ERROR -> {
                     binding.loginProgressBar.visibility = View.GONE
@@ -81,5 +87,11 @@ class AuthActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun redirectLogin() {
+        Intent(this, FridgeActivity::class.java).also {
+            startActivity(it)
+        }
     }
 }
