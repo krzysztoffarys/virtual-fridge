@@ -176,8 +176,7 @@
             android:hint="@string/email"
             android:textColorHint="@android:color/tertiary_text_light"
             android:inputType="textEmailAddress"
-            android:padding="16dp"
-            android:textColor="@android:color/white" />
+            android:padding="16dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -186,7 +185,6 @@
         android:id="@+id/tilRegisterPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:alpha="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvRegisterTitle">
@@ -200,7 +198,7 @@
             android:textColorHint="@android:color/tertiary_text_light"
             android:inputType="textPassword"
             android:padding="16dp"
-            android:textColor="@android:color/white" />
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -209,7 +207,6 @@
         android:id="@+id/tilRegisterPasswordConfirm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:alpha="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvRegisterTitle" >
@@ -222,8 +219,7 @@
             android:hint="@string/confirm_password"
             android:textColorHint="@android:color/tertiary_text_light"
             android:inputType="textPassword"
-            android:padding="16dp"
-            android:textColor="@android:color/white"/>
+            android:padding="16dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -234,7 +230,6 @@
         android:layout_marginTop="16dp"
         android:text="@string/register"
         android:textColor="@color/white"
-        android:alpha="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvRegisterTitle" />
 
