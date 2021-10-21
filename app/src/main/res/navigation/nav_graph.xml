@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fridgeFragment">
+    <fragment
+        android:id="@+id/fridgeFragment"
+        android:name="com.example.virtualfridge.ui.fridge.FridgeFragment"
+        android:label="fridge_fragment"
+        tools:layout="@layout/fridge_fragment" />
+    <fragment
+        android:id="@+id/recipesFragment"
+        android:name="com.example.virtualfridge.ui.recipes.RecipesFragment"
+        android:label="recipes_fragment"
+        tools:layout="@layout/recipes_fragment" />
+    <fragment
+        android:id="@+id/savedRecipesFragment"
+        android:name="com.example.virtualfridge.ui.saved.SavedRecipesFragment"
+        android:label="saved_recipes_fragment"
+        tools:layout="@layout/saved_recipes_fragment" />
+</navigation>

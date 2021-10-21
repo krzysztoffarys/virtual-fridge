@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Virtual Fridge</string>
+    <string name="fridge">My Fridge</string>
+    <string name="search_recipes">Search Recipes</string>
+    <string name="saved_recipes">Saved Recipes</string>
+    <string name="search_for_recipes">Search for recipes</string>
+
+
 </resources>
