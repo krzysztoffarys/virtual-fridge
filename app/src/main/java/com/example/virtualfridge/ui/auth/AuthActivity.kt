@@ -22,6 +22,13 @@ class AuthActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         subscribeToObservers()
+        viewModel.isLoggedIn()
+
+        binding.btnLogin.setOnClickListener {
+            val email = binding.etLoginEmail.text.toString()
+            val password = binding.etLoginPassword.text.toString()
+            viewModel.loginUser(email, password)
+        }
 
         binding.btnRegister.setOnClickListener {
             val email = binding.etRegisterEmail.text.toString()
@@ -35,6 +42,28 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun subscribeToObservers() {
+
+        viewModel.loginStatus.observe(this, { result ->
+            when(result.status) {
+                Status.SUCCESS -> {
+                    binding.loginProgressBar.visibility = View.GONE
+                    val message = result.message ?: "Successfully logged in"
+                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                }
+                Status.ERROR -> {
+                    binding.loginProgressBar.visibility = View.GONE
+                    val message = result.message ?: "An unknown error occurred"
+                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                }
+                Status.LOADING -> {
+                    binding.loginProgressBar.visibility = View.VISIBLE
+                }
+            }
+        })
+
+
+        //
+        //
         viewModel.registerStatus.observe(this, { result ->
             when(result.status) {
                 Status.SUCCESS -> {
