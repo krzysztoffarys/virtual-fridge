@@ -14,6 +14,11 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="logout">Logout</string>
+    <string name="name">Name</string>
+    <string name="amount">Amount</string>
+    <string name="add_a_new_product">Add a new Product</string>
+    <string name="add">ADD</string>
+    <string name="cancel">CANCEL</string>
 
 
 </resources>

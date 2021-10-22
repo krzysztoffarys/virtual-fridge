@@ -5,6 +5,10 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.virtualfridge.R
+import com.example.virtualfridge.data.model.Product
+import com.example.virtualfridge.databinding.FridgeFragmentBinding
+import com.example.virtualfridge.ui.dialogs.AddDialogListener
+import com.example.virtualfridge.ui.dialogs.AddProductDialog
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -14,6 +18,7 @@ class FridgeFragment : Fragment(R.layout.fridge_fragment) {
 
     @Inject
     lateinit var auth: FirebaseAuth
+    private lateinit var binding : FridgeFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +31,16 @@ class FridgeFragment : Fragment(R.layout.fridge_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FridgeFragmentBinding.bind(view)
+
+        binding.fab.setOnClickListener {
+            AddProductDialog(requireContext(), object : AddDialogListener {
+                override fun onAddButtonClicked(product: Product) {
+                    "Hey"
+                }
+            }).show()
+        }
+
     }
 
     private fun logout() {
