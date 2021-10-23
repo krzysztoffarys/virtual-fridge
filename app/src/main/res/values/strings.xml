@@ -19,6 +19,7 @@
     <string name="add_a_new_product">Add a new Product</string>
     <string name="add">ADD</string>
     <string name="cancel">CANCEL</string>
+    <string name="select">Select</string>
 
 
 </resources>

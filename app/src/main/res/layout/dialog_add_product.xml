@@ -7,15 +7,14 @@
     android:layout_height="wrap_content"
     android:padding="16dp"
     android:minWidth="300dp"
-    android:orientation="vertical"
-    android:background="@color/light_grey">
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_a_new_product"
-        android:textColor="@android:color/white"
+        android:textColor="@color/light_green"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +30,7 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:textAlignment="center"
-        android:textColor="@android:color/white"
+        android:textColor="@color/light_green"
         app:layout_constraintEnd_toStartOf="@+id/etAmount"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
@@ -46,11 +45,11 @@
         android:textAlignment="center"
         android:inputType="number"
         android:minHeight="48dp"
-        android:textColor="@android:color/white"
+        android:textColor="@color/light_green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
-    <TextView
+    <Button
         android:id="@+id/tvAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etAmount" />
 
-    <TextView
+    <Button
         android:id="@+id/tvCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -14,8 +14,11 @@ import com.example.virtualfridge.databinding.FridgeFragmentBinding
 import com.example.virtualfridge.other.Status
 import com.example.virtualfridge.ui.dialogs.AddDialogListener
 import com.example.virtualfridge.ui.dialogs.AddProductDialog
+import com.example.virtualfridge.ui.dialogs.SelectDialogListener
+import com.example.virtualfridge.ui.dialogs.SelectImageDialog
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -44,7 +47,6 @@ class FridgeFragment : Fragment(R.layout.fridge_fragment) {
         setupRecyclerView()
         subscribeToObservers()
         viewModel.subscribeToRealtimeUpdates()
-
         //
         binding.fab.setOnClickListener {
             AddProductDialog(requireContext(), object : AddDialogListener {
@@ -76,9 +78,10 @@ class FridgeFragment : Fragment(R.layout.fridge_fragment) {
 
 
     private fun setupRecyclerView() = binding.rv.apply {
-        productAdapter = ProductAdapter(viewModel)
+        productAdapter = ProductAdapter(viewModel, requireContext())
         adapter = productAdapter
         layoutManager = LinearLayoutManager(requireContext())
+
     }
 
     //Setting menu
