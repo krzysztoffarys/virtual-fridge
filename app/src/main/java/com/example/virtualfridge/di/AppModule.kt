@@ -1,6 +1,5 @@
 package com.example.virtualfridge.di
 
-import com.example.virtualfridge.other.Constants.PRODUCT_COLLECTION
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -9,6 +8,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import timber.log.Timber
 import javax.inject.Singleton
 
 @Module
@@ -24,7 +24,5 @@ object AppModule {
     fun provideFireStore() = Firebase.firestore
 
     @Provides
-    @Singleton
-    fun provideProductCollection(fireStore: FirebaseFirestore) = fireStore.collection(PRODUCT_COLLECTION)
-
+    fun provideProductCollection(fireStore: FirebaseFirestore, auth: FirebaseAuth) = fireStore.collection("${auth.uid}")
 }

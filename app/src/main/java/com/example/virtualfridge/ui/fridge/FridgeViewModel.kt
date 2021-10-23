@@ -21,8 +21,6 @@ class FridgeViewModel @Inject constructor(
     private val _productsStatus = MutableLiveData<Resource<List<Product>>>()
     val productsStatus: LiveData<Resource<List<Product>>> = _productsStatus
 
-
-
     fun insertProduct(product: Product) = viewModelScope.launch {
         productCollection
             .whereEqualTo("name", product.name)
