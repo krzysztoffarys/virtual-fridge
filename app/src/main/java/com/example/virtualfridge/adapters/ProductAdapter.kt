@@ -10,7 +10,7 @@ import com.example.virtualfridge.databinding.ProductBinding
 import com.example.virtualfridge.ui.fridge.FridgeViewModel
 
 class ProductAdapter(
-    viewModel: FridgeViewModel
+    val viewModel: FridgeViewModel
 ) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
     inner class ProductViewHolder(val binding: ProductBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -41,7 +41,21 @@ class ProductAdapter(
             tvName.text = curProduct.name
             tvAmount.text = curProduct.amount.toString()
 
+            ivAdd.setOnClickListener {
+                viewModel.updateProductAmount(
+                    curProduct, Product(curProduct.name, curProduct.amount + 1)
+                )
+            }
 
+            ivDelete.setOnClickListener {
+                viewModel.deleteProduct(curProduct)
+            }
+
+            ivRemove.setOnClickListener {
+                viewModel.updateProductAmount(
+                    curProduct, Product(curProduct.name, curProduct.amount - 1)
+                )
+            }
 
         }
     }
