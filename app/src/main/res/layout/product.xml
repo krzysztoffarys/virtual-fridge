@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:background="@color/light_grey">
+    android:background="@color/very_light_grey">
 
     <TextView
         android:id="@+id/tvName"
@@ -14,7 +14,7 @@
 
         android:layout_marginStart="16dp"
         android:text="@string/name"
-        android:textColor="@color/white"
+        android:textColor="@color/dark_green"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvAmount"
         app:layout_constraintStart_toEndOf="@+id/ivItem" />
@@ -28,7 +28,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/amount"
-        android:textColor="@color/white"
+        android:textColor="@color/dark_green"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/ivAdd"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:src="@color/white"
+        android:src="@drawable/ic_question_mark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

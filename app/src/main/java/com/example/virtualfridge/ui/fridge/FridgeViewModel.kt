@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.virtualfridge.data.model.ImageResponse
 import com.example.virtualfridge.data.model.Product
 import com.example.virtualfridge.other.Resource
+import com.example.virtualfridge.repositories.FridgeRepository
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ktx.toObject
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FridgeViewModel @Inject constructor(
-    private val productCollection: CollectionReference
+    private val productCollection: CollectionReference,
 ) : ViewModel() {
 
     private val _productsStatus = MutableLiveData<Resource<List<Product>>>()

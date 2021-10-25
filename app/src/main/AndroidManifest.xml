@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.FridgeActivity" />
+        <activity android:name=".ui.selectImage.ProductImageActivity" />
     </application>
 
 </manifest>

@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_fridgeFragment_to_authActivity"
             app:destination="@id/authActivity" />
+        <action
+            android:id="@+id/action_fridgeFragment_to_productImageActivity"
+            app:destination="@id/productImageActivity" />
     </fragment>
     <fragment
         android:id="@+id/recipesFragment"
@@ -35,4 +38,13 @@
         android:id="@+id/authActivity"
         android:name="com.example.virtualfridge.ui.auth.AuthActivity"
         android:label="AuthActivity" />
+    <activity
+        android:id="@+id/productImageActivity"
+        android:name="com.example.virtualfridge.ui.selectImage.ProductImageActivity"
+        android:label="product_image_activity"
+        tools:layout="@layout/activity_product_image" >
+        <argument
+            android:name="product"
+            app:argType="com.example.virtualfridge.data.model.Product" />
+    </activity>
 </navigation>

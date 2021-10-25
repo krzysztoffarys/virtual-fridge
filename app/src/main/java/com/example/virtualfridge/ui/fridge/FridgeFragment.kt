@@ -14,11 +14,8 @@ import com.example.virtualfridge.databinding.FridgeFragmentBinding
 import com.example.virtualfridge.other.Status
 import com.example.virtualfridge.ui.dialogs.AddDialogListener
 import com.example.virtualfridge.ui.dialogs.AddProductDialog
-import com.example.virtualfridge.ui.dialogs.SelectDialogListener
-import com.example.virtualfridge.ui.dialogs.SelectImageDialog
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -54,6 +51,12 @@ class FridgeFragment : Fragment(R.layout.fridge_fragment) {
                     viewModel.insertProduct(product)
                 }
             }).show()
+        }
+
+        productAdapter.setOnItemClickListener {
+            findNavController().navigate(
+                FridgeFragmentDirections.actionFridgeFragmentToProductImageActivity(it)
+            )
         }
 
     }
