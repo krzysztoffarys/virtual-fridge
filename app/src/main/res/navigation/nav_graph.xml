@@ -45,6 +45,6 @@
         tools:layout="@layout/activity_product_image" >
         <argument
             android:name="product"
-            app:argType="com.example.virtualfridge.data.model.Product" />
+            app:argType="com.example.virtualfridge.data.model.fridge.Product" />
     </activity>
 </navigation>

@@ -1,6 +1,7 @@
 package com.example.virtualfridge.ui.selectImage
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -28,7 +29,7 @@ class ProductImageActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupRecyclerView()
         subscribeToObservers()
-        viewModel.provideImages(12, product.name)
+        viewModel.provideImages(12, "${product.name} drawing")
 
         selectImageAdapter.setOnItemClickListener { position ->
             var holder = binding.rv.findViewHolderForAdapterPosition(selectImageAdapter.selectedItem)
@@ -61,19 +62,19 @@ class ProductImageActivity : AppCompatActivity() {
         viewModel.imageResponseStatus.observe(this, { result ->
             when(result.status) {
                 Status.SUCCESS -> {
+                    binding.progressBar.visibility = View.GONE
                     val data = result.data
-                    Timber.d("Halo")
                     if (data != null) {
                         selectImageAdapter.hits = data.hits
-                        Timber.d("Halo ${data.hits.size}")
                     }
                 }
                 Status.ERROR -> {
+                    binding.progressBar.visibility = View.GONE
                     val message = result.message ?: "An unknown error occurred"
                     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                 }
                 Status.LOADING ->{
-
+                    binding.progressBar.visibility = View.VISIBLE
                 }
             }
         })

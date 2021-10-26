@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.virtualfridge.data.model.ImageResponse
-import com.example.virtualfridge.data.model.Product
+import com.example.virtualfridge.data.model.fridge.ImageResponse
+import com.example.virtualfridge.data.model.fridge.Product
 import com.example.virtualfridge.other.Resource
 import com.example.virtualfridge.repositories.FridgeRepository
 import com.google.firebase.firestore.CollectionReference
@@ -26,6 +26,7 @@ class ProductImageViewModel @Inject constructor(
 
     fun provideImages(size: Int, search: String) =
         viewModelScope.launch {
+            _imageResponseStatus.postValue(Resource.loading(null))
             try {
                 val response = repository.getImages(searchQuery = search, perPage = size)
                 if(response.isSuccessful && response.body() != null) {

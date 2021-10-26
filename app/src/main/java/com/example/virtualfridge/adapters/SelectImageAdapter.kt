@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.virtualfridge.data.model.Hit
+import com.example.virtualfridge.data.model.fridge.Hit
 import com.example.virtualfridge.databinding.ImageBinding
 import timber.log.Timber
 
@@ -26,9 +26,7 @@ class SelectImageAdapter : RecyclerView.Adapter<SelectImageAdapter.ImageViewHold
 
     var hits: List<Hit>
         get() = differ.currentList
-        set(value) = differ.submitList(value).also {
-            Timber.d(hits.size.toString())
-        }
+        set(value) = differ.submitList(value)
 
 
     private var onItemClickListener: ((Int) -> Unit)? = null

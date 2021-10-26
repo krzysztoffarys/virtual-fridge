@@ -1,6 +1,6 @@
 package com.example.virtualfridge.data.remote
 
-import com.example.virtualfridge.data.model.ImageResponse
+import com.example.virtualfridge.data.model.fridge.ImageResponse
 import com.example.virtualfridge.other.Key.PIXABAY_API_KEY
 import retrofit2.Response
 import retrofit2.http.GET

@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
-import com.example.virtualfridge.data.model.Product
+import com.example.virtualfridge.data.model.fridge.Product
 import com.example.virtualfridge.databinding.DialogAddProductBinding
 
 class AddProductDialog(context: Context, var addDialogListener: AddDialogListener) :

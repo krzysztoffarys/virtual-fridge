@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.virtualfridge.R
 import com.example.virtualfridge.adapters.ProductAdapter
-import com.example.virtualfridge.data.model.Product
+import com.example.virtualfridge.data.model.fridge.Product
 import com.example.virtualfridge.databinding.FridgeFragmentBinding
 import com.example.virtualfridge.other.Status
 import com.example.virtualfridge.ui.dialogs.AddDialogListener
@@ -66,14 +66,16 @@ class FridgeFragment : Fragment(R.layout.fridge_fragment) {
         viewModel.productsStatus.observe(viewLifecycleOwner, { result ->
             when(result.status) {
                 Status.SUCCESS -> {
+                    binding.progressBar.visibility = View.GONE
                     productAdapter.products = result.data!!
                 }
                 Status.ERROR -> {
+                    binding.progressBar.visibility = View.GONE
                     val message = result.message ?: "An unknown error occurred"
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
                 }
                 Status.LOADING ->{
-
+                    binding.progressBar.visibility = View.VISIBLE
                 }
             }
         })

@@ -1,4 +1,4 @@
-package com.example.virtualfridge.data.model
+package com.example.virtualfridge.data.model.fridge
 
 import java.io.Serializable
 
