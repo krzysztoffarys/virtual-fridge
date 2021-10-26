@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_recipesFragment_to_authActivity"
             app:destination="@id/authActivity" />
+        <action
+            android:id="@+id/action_recipesFragment_to_recipeFragment"
+            app:destination="@id/recipeFragment" />
     </fragment>
     <fragment
         android:id="@+id/savedRecipesFragment"
@@ -33,6 +36,9 @@
         <action
             android:id="@+id/action_savedRecipesFragment_to_authActivity"
             app:destination="@id/authActivity" />
+        <action
+            android:id="@+id/action_savedRecipesFragment_to_recipeFragment"
+            app:destination="@id/recipeFragment" />
     </fragment>
     <activity
         android:id="@+id/authActivity"
@@ -47,4 +53,13 @@
             android:name="product"
             app:argType="com.example.virtualfridge.data.model.fridge.Product" />
     </activity>
+    <fragment
+        android:id="@+id/recipeFragment"
+        android:name="com.example.virtualfridge.ui.recipe.RecipeFragment"
+        android:label="recipe_fragment"
+        tools:layout="@layout/recipe_fragment" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
 </navigation>

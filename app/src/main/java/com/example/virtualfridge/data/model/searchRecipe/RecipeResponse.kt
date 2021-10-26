@@ -1,4 +1,4 @@
-package com.example.virtualfridge.data.model.recipe
+package com.example.virtualfridge.data.model.searchRecipe
 
 data class RecipeResponse(
     val number: Int,

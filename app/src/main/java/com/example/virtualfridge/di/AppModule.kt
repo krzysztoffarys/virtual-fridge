@@ -1,8 +1,13 @@
 package com.example.virtualfridge.di
 
+import android.content.Context
+import androidx.room.Room
+import com.example.virtualfridge.data.local.RecipeDao
+import com.example.virtualfridge.data.local.RecipeDatabase
 import com.example.virtualfridge.data.remote.ImageApi
 import com.example.virtualfridge.data.remote.RecipeApi
 import com.example.virtualfridge.other.Constants.PIXABAY_BASE_URL
+import com.example.virtualfridge.other.Constants.RECIPE_DATABASE_NAME
 import com.example.virtualfridge.other.Constants.SPOONACULAR_BASE_URL
 import com.example.virtualfridge.repositories.FridgeRepository
 import com.google.firebase.auth.FirebaseAuth
@@ -12,6 +17,7 @@ import com.google.firebase.ktx.Firebase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -75,6 +81,19 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRepository(imageApi: ImageApi, recipeApi: RecipeApi) = FridgeRepository(imageApi, recipeApi)
+    fun provideRepository(imageApi: ImageApi, recipeApi: RecipeApi, recipeDao: RecipeDao) = FridgeRepository(imageApi, recipeApi, recipeDao)
+
+    @Singleton
+    @Provides
+    fun provideRecipeDatabase(
+        @ApplicationContext context: Context
+    ) = Room.databaseBuilder(context,
+        RecipeDatabase::class.java, RECIPE_DATABASE_NAME)
+        .fallbackToDestructiveMigration()
+        .build()
+
+    @Singleton
+    @Provides
+    fun provideRecipeDao(db: RecipeDatabase) = db.getRecipeDao()
 
 }

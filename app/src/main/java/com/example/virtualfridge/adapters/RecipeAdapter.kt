@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.virtualfridge.databinding.RecipeBinding
-import com.example.virtualfridge.data.model.recipe.Result
+import com.example.virtualfridge.data.model.searchRecipe.Result
 
 class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
     inner class RecipeViewHolder(val binding: RecipeBinding) : RecyclerView.ViewHolder(binding.root)
@@ -27,7 +27,7 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
         get() = differ.currentList
         set(value) = differ.submitList(value)
 
-    private var onItemClickListener: ((Int) -> Unit)? = null
+    private var onItemClickListener: ((Result) -> Unit)? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
@@ -47,7 +47,13 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
         holder.binding.ivRecipe.setOnClickListener {
             onItemClickListener?.let { click ->
-                click(position)
+                click(curRecipe)
+            }
+        }
+
+        holder.binding.ivGradient.setOnClickListener {
+            onItemClickListener?.let { click ->
+                click(curRecipe)
             }
         }
     }
@@ -56,7 +62,7 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
         return recipes.size
     }
 
-    fun setOnItemClickListener(onItemClick: ((Int) -> Unit)?) {
+    fun setOnItemClickListener(onItemClick: ((Result) -> Unit)?) {
         this.onItemClickListener = onItemClick
     }
 

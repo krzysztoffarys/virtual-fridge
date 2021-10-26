@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.virtualfridge.data.model.recipe.RecipeResponse
+import com.example.virtualfridge.data.model.searchRecipe.RecipeResponse
 import com.example.virtualfridge.other.Resource
 import com.example.virtualfridge.repositories.FridgeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,12 +13,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchRecipesViewModel @Inject constructor(
-    val repository: FridgeRepository
+    private val repository: FridgeRepository
 ): ViewModel() {
 
     private val _recipeResponseStatus = MutableLiveData<Resource<RecipeResponse>>()
     val recipeResponseStatus: LiveData<Resource<RecipeResponse>> = _recipeResponseStatus
-
 
     fun provideRecipes(search: String) =
         viewModelScope.launch {
@@ -39,5 +38,4 @@ class SearchRecipesViewModel @Inject constructor(
                         e.message ?: "An unknown error occurred", null))
             }
         }
-
 }
