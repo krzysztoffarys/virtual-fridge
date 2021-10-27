@@ -38,6 +38,12 @@ class SavedRecipesFragment : Fragment(R.layout.saved_recipes_fragment) {
         setupRecyclerView()
         subscribeToObservers()
         viewModel.savedRecipes()
+
+        recipeAdapter.setOnItemClickListener {
+            findNavController().navigate(
+                SavedRecipesFragmentDirections.actionSavedRecipesFragmentToRecipeFragment(it)
+            )
+        }
     }
 
     private fun subscribeToObservers() {

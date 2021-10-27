@@ -1,5 +1,6 @@
 package com.example.virtualfridge.ui.fridge
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -49,6 +50,9 @@ class FridgeFragment : Fragment(R.layout.fridge_fragment) {
             AddProductDialog(requireContext(), object : AddDialogListener {
                 override fun onAddButtonClicked(product: Product) {
                     viewModel.insertProduct(product)
+                    if(product.name == "Whisky") {
+                        MediaPlayer.create(context, R.raw.drinken_machen_by_siara).start()
+                    }
                 }
             }).show()
         }
@@ -71,7 +75,7 @@ class FridgeFragment : Fragment(R.layout.fridge_fragment) {
                 }
                 Status.ERROR -> {
                     binding.progressBar.visibility = View.GONE
-                    val message = result.message ?: "An unknown error occurred"
+                    val message = result.message ?: context?.getString(R.string.unknown_error)
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
                 }
                 Status.LOADING ->{

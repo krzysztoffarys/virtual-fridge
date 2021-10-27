@@ -7,12 +7,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.virtualfridge.R
 import com.example.virtualfridge.adapters.SelectImageAdapter
 import com.example.virtualfridge.databinding.ActivityProductImageBinding
 import com.example.virtualfridge.databinding.ImageBinding
 import com.example.virtualfridge.other.Status
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class ProductImageActivity : AppCompatActivity() {
@@ -29,7 +29,7 @@ class ProductImageActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupRecyclerView()
         subscribeToObservers()
-        viewModel.provideImages(12, "${product.name} drawing")
+        viewModel.provideImages(10, product.name)
 
         selectImageAdapter.setOnItemClickListener { position ->
             var holder = binding.rv.findViewHolderForAdapterPosition(selectImageAdapter.selectedItem)
@@ -70,8 +70,8 @@ class ProductImageActivity : AppCompatActivity() {
                 }
                 Status.ERROR -> {
                     binding.progressBar.visibility = View.GONE
-                    val message = result.message ?: "An unknown error occurred"
-                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                    val message = result.message ?: this.getString(R.string.unknown_error)
+                    Toast.makeText(this, message.toString(), Toast.LENGTH_SHORT).show()
                 }
                 Status.LOADING ->{
                     binding.progressBar.visibility = View.VISIBLE

@@ -1,6 +1,7 @@
 package com.example.virtualfridge.di
 
 import android.content.Context
+import android.media.MediaPlayer
 import androidx.room.Room
 import com.example.virtualfridge.data.local.RecipeDao
 import com.example.virtualfridge.data.local.RecipeDatabase
@@ -11,6 +12,7 @@ import com.example.virtualfridge.other.Constants.RECIPE_DATABASE_NAME
 import com.example.virtualfridge.other.Constants.SPOONACULAR_BASE_URL
 import com.example.virtualfridge.repositories.FridgeRepository
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -72,16 +74,16 @@ object AppModule {
     @Provides
     @Singleton
     fun provideApiImages(
-        @Named("RetrofitInstanceImages") retrofit: Retrofit) = retrofit.create(ImageApi::class.java)
+        @Named("RetrofitInstanceImages") retrofit: Retrofit): ImageApi = retrofit.create(ImageApi::class.java)
 
     @Provides
     @Singleton
     fun provideApiRecipes(
-        @Named("RetrofitInstanceRecipes") retrofit: Retrofit) = retrofit.create(RecipeApi::class.java)
+        @Named("RetrofitInstanceRecipes") retrofit: Retrofit): RecipeApi = retrofit.create(RecipeApi::class.java)
 
     @Singleton
     @Provides
-    fun provideRepository(imageApi: ImageApi, recipeApi: RecipeApi, recipeDao: RecipeDao) = FridgeRepository(imageApi, recipeApi, recipeDao)
+    fun provideRepository(imageApi: ImageApi, recipeApi: RecipeApi, recipeDao: RecipeDao, productCollection: CollectionReference) = FridgeRepository(imageApi, recipeApi, recipeDao, productCollection)
 
     @Singleton
     @Provides

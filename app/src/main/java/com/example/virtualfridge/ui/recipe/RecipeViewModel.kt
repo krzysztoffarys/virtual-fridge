@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.virtualfridge.R
 import com.example.virtualfridge.data.model.detailRecipe.DetailRecipeResponse
 import com.example.virtualfridge.data.model.searchRecipe.Result
 import com.example.virtualfridge.other.Resource
@@ -20,9 +21,10 @@ class RecipeViewModel @Inject constructor(
 
     private val _detailRecipeResponseStatus = MutableLiveData<Resource<DetailRecipeResponse>>()
     val detailRecipeResponseStatus: LiveData<Resource<DetailRecipeResponse>> = _detailRecipeResponseStatus
-    var url = ""
-    var title = ""
-    var id = 0
+
+    private val _isSaved = MutableLiveData<Boolean>()
+    val isSaved: LiveData<Boolean> = _isSaved
+
 
     fun getRecipeDetail(id: Int) =
         viewModelScope.launch {
@@ -44,13 +46,28 @@ class RecipeViewModel @Inject constructor(
             }
         }
 
-    fun saveRecipe() = viewModelScope.launch {
-        val recipe = Result(id = id, image = url, title = title)
+    fun saveRecipe(recipe: Result) = viewModelScope.launch {
         try {
             repository.insert(recipe)
         } catch (e: Exception) {
             Timber.d(e)
         }
+    }
 
+    fun deleteRecipe(recipe: Result) = viewModelScope.launch {
+        try {
+            repository.delete(recipe)
+        } catch (e: Exception) {
+            Timber.d(e)
+        }
+    }
+
+
+    fun checkIfRecipeIsSaved(recipe: Result) = viewModelScope.launch {
+        try {
+            _isSaved.postValue(repository.isRecipeInDatabase(recipe))
+        } catch (e: Exception) {
+            Timber.d(e)
+        }
     }
 }

@@ -10,10 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Lorem ipsum"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:translationZ="2dp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/ivGradient"
         app:layout_constraintEnd_toEndOf="@+id/ivRecipe"
         app:layout_constraintStart_toStartOf="@+id/ivRecipe" />

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.virtualfridge.R
 import com.example.virtualfridge.data.model.searchRecipe.RecipeResponse
 import com.example.virtualfridge.other.Resource
 import com.example.virtualfridge.repositories.FridgeRepository

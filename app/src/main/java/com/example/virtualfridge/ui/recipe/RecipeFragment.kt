@@ -22,17 +22,24 @@ class RecipeFragment : Fragment(R.layout.recipe_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = RecipeFragmentBinding.bind(view)
-
         binding.webView.webViewClient = WebViewClient()
-        val id = args.id
+        val recipe = args.recipe
         subscribeToObservers()
-        viewModel.getRecipeDetail(id)
+        viewModel.checkIfRecipeIsSaved(recipe)
+        viewModel.getRecipeDetail(recipe.id)
 
         binding.fab.setOnClickListener {
-            viewModel.id = id
-            viewModel.saveRecipe()
+            if (viewModel.isSaved.value == true) {
+                viewModel.deleteRecipe(recipe)
+                Toast.makeText(requireContext(), requireContext().getString(R.string.delete_recipe), Toast.LENGTH_SHORT).show()
+            } else {
+                viewModel.saveRecipe(recipe)
+                Toast.makeText(requireContext(), requireContext().getString(R.string.save_recipe), Toast.LENGTH_SHORT).show()
+            }
+            viewModel.checkIfRecipeIsSaved(recipe)
         }
     }
+
 
     private fun subscribeToObservers() {
 
@@ -44,17 +51,28 @@ class RecipeFragment : Fragment(R.layout.recipe_fragment) {
                     val data = result.data
                     if (data != null) {
                         binding.webView.loadUrl(result.data.sourceUrl)
-                        viewModel.url = result.data.sourceUrl
-                        viewModel.title = result.data.title
                     }
                 }
                 Status.ERROR -> {
                     binding.progressBar.visibility = View.GONE
-                    val message = result.message ?: "An unknown error occurred"
+                    val message = result.message ?: requireContext().getString(R.string.unknown_error)
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
                 }
                 Status.LOADING ->{
                     binding.progressBar.visibility = View.VISIBLE
+                }
+            }
+        })
+
+        viewModel.isSaved.observe(viewLifecycleOwner, { isSaved ->
+            when(isSaved) {
+                true -> {
+                    val unlike = resources.getIdentifier("ic_unlike_foreground", "drawable", context?.packageName)
+                    binding.fab.setImageResource(unlike)
+                }
+                false -> {
+                    val like = resources.getIdentifier("ic_like_foreground", "drawable", context?.packageName)
+                    binding.fab.setImageResource(like)
                 }
             }
         })

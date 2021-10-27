@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.virtualfridge.R
 import com.example.virtualfridge.databinding.RecipeBinding
 import com.example.virtualfridge.data.model.searchRecipe.Result
 
@@ -39,6 +40,7 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
         val curRecipe = recipes[position]
         Glide.with(holder.itemView)
             .load(curRecipe.image)
+            .placeholder(R.drawable.ic_question_mark)
             .into(holder.binding.ivRecipe)
 
 

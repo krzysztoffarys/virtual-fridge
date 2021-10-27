@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
+import com.example.virtualfridge.R
 import com.example.virtualfridge.data.model.fridge.Product
 import com.example.virtualfridge.databinding.DialogAddProductBinding
 
-class AddProductDialog(context: Context, var addDialogListener: AddDialogListener) :
+class AddProductDialog(context: Context, private var addDialogListener: AddDialogListener) :
     AppCompatDialog(context) {
     private lateinit var binding: DialogAddProductBinding
 
@@ -22,12 +23,12 @@ class AddProductDialog(context: Context, var addDialogListener: AddDialogListene
             val name = binding.etName.text.toString()
             val amount = binding.etAmount.text.toString()
             if(name.isEmpty()) {
-                Toast.makeText(context, "Please enter a name", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, context.getString(R.string.enter_name), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if(amount.isEmpty()) {
-                Toast.makeText(context, "Please enter amount", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, context.getString(R.string.enter_amount), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 

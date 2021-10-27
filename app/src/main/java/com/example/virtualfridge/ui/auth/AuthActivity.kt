@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.virtualfridge.R
 import com.example.virtualfridge.databinding.ActivityAuthBinding
 import com.example.virtualfridge.other.Status
 import com.example.virtualfridge.ui.FridgeActivity
@@ -52,13 +53,13 @@ class AuthActivity : AppCompatActivity() {
             when(result.status) {
                 Status.SUCCESS -> {
                     binding.loginProgressBar.visibility = View.GONE
-                    val message = result.message ?: "Successfully logged in"
+                    val message = result.message ?: getString(R.string.successful_login)
                     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                     redirectLogin()
                 }
                 Status.ERROR -> {
                     binding.loginProgressBar.visibility = View.GONE
-                    val message = result.message ?: "An unknown error occurred"
+                    val message = result.message ?: getString(R.string.unknown_error)
                     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                 }
                 Status.LOADING -> {
@@ -74,12 +75,12 @@ class AuthActivity : AppCompatActivity() {
             when(result.status) {
                 Status.SUCCESS -> {
                     binding.registerProgressBar.visibility = View.GONE
-                    val message = result.message ?: "Successfully registered an account"
+                    val message = result.message ?: getString(R.string.successful_registration)
                     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                 }
                 Status.ERROR -> {
                     binding.registerProgressBar.visibility = View.GONE
-                    val message = result.message ?: "An unknown error occurred"
+                    val message = result.message ?: getString(R.string.unknown_error)
                     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                 }
                 Status.LOADING -> {

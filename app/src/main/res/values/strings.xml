@@ -3,11 +3,12 @@
     <string name="fridge">My Fridge</string>
     <string name="search_recipes">Search Recipes</string>
     <string name="saved_recipes">Saved Recipes</string>
-    <string name="search_for_recipes">Search for recipes</string>
+
 
     <string name="login_header">Login with an existing Account</string>
     <string name="register_header">Register a new Account</string>
     <string name="swipe">Not a member yet?\nSwipe up to register!</string>
+    <string name="swipe_already">Already have an account?\nSwipe down to login!</string>
     <string name="email">E-Mail</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
@@ -21,5 +22,16 @@
     <string name="cancel">CANCEL</string>
     <string name="select">Select</string>
     <string name="search">Search</string>
+
+    <string name="unknown_error">An unknown error occurred</string>
+    <string name="empty_field">The field is empty</string>
+    <string name="delete_recipe">You deleted the recipe from the database</string>
+    <string name="save_recipe">You saved the recipe into the database</string>
+    <string name="enter_name">Please enter a name</string>
+    <string name="enter_amount">Please enter amount</string>
+    <string name="passwords_not_match">The passwords do not match</string>
+    <string name="fill_fields">Please fill out all the fields</string>
+    <string name="successful_registration">Successfully registered an account</string>
+    <string name="successful_login">Successfully logged in</string>
 
 </resources>

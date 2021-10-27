@@ -14,7 +14,11 @@
             app:destination="@id/authActivity" />
         <action
             android:id="@+id/action_fridgeFragment_to_productImageActivity"
-            app:destination="@id/productImageActivity" />
+            app:destination="@id/productImageActivity"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/recipesFragment"
@@ -26,7 +30,11 @@
             app:destination="@id/authActivity" />
         <action
             android:id="@+id/action_recipesFragment_to_recipeFragment"
-            app:destination="@id/recipeFragment" />
+            app:destination="@id/recipeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/savedRecipesFragment"
@@ -38,7 +46,11 @@
             app:destination="@id/authActivity" />
         <action
             android:id="@+id/action_savedRecipesFragment_to_recipeFragment"
-            app:destination="@id/recipeFragment" />
+            app:destination="@id/recipeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <activity
         android:id="@+id/authActivity"
@@ -59,7 +71,7 @@
         android:label="recipe_fragment"
         tools:layout="@layout/recipe_fragment" >
         <argument
-            android:name="id"
-            app:argType="integer" />
+            android:name="recipe"
+            app:argType="com.example.virtualfridge.data.model.searchRecipe.Result" />
     </fragment>
 </navigation>

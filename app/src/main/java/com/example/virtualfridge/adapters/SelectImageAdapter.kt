@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.virtualfridge.data.model.fridge.Hit
 import com.example.virtualfridge.databinding.ImageBinding
-import timber.log.Timber
 
 class SelectImageAdapter : RecyclerView.Adapter<SelectImageAdapter.ImageViewHolder>() {
     inner class ImageViewHolder(val binding: ImageBinding) : RecyclerView.ViewHolder(binding.root)

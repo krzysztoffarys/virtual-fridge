@@ -44,7 +44,7 @@ class SearchRecipesFragment : Fragment(R.layout.search_recipes_fragment) {
         binding.btnSearch.setOnClickListener {
             val query = binding.etSearch.text.toString()
             if (query.isBlank()) {
-                Toast.makeText(requireContext(), "The field is empty", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), requireContext().getString(R.string.empty_field), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             viewModel.provideRecipes(query)
@@ -52,7 +52,7 @@ class SearchRecipesFragment : Fragment(R.layout.search_recipes_fragment) {
 
         recipeAdapter.setOnItemClickListener { result ->
             findNavController().navigate(
-                SearchRecipesFragmentDirections.actionRecipesFragmentToRecipeFragment(result.id)
+                SearchRecipesFragmentDirections.actionRecipesFragmentToRecipeFragment(result)
             )
         }
     }
@@ -77,7 +77,7 @@ class SearchRecipesFragment : Fragment(R.layout.search_recipes_fragment) {
                 }
                 Status.ERROR -> {
                     binding.progressBar.visibility = View.GONE
-                    val message = result.message ?: "An unknown error occurred"
+                    val message = result.message ?: requireContext().getString(R.string.unknown_error)
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
                 }
                 Status.LOADING ->{

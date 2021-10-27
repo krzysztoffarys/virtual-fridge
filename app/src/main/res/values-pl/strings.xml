@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Virtual Fridge</string>
+    <string name="fridge">Moja Lodówka</string>
+    <string name="search_recipes">Szukaj Przepisów</string>
+    <string name="saved_recipes">Zapisane Przepisy</string>
+
+    <string name="login_header">Zaloguj się</string>
+    <string name="register_header">Zarejestruj się</string>
+    <string name="swipe">Nie jesteś jeszcze użytkownikem?\nPrzesuń, żeby się zarejestrować!</string>
+    <string name="swipe_already">Jesteś już posiadaczem konta?\nPrzesuń, żeby się zarejestrować!</string>
+    <string name="email">E-Mail</string>
+    <string name="password">Hasło</string>
+    <string name="confirm_password">Powtórz hasło</string>
+    <string name="login">Zaloguj się</string>
+    <string name="register">Zarejestruj się</string>
+    <string name="logout">Wyloguj się</string>
+    <string name="name">Nazwa</string>
+    <string name="amount">Ilość</string>
+    <string name="add_a_new_product">Dodaj nowy produkt</string>
+    <string name="add">DODAJ</string>
+    <string name="cancel">ANULUJ</string>
+    <string name="select">Wybierz</string>
+    <string name="search">Szukaj</string>
+
+    <string name="unknown_error">Wystąpił nieznay błąd</string>
+    <string name="empty_field">Pole jest puste</string>
+    <string name="delete_recipe">Usunałeś przepis z bazy danych</string>
+    <string name="save_recipe">Dodałeś przepis do bazy danych</string>
+    <string name="enter_name">Podaj nazwę</string>
+    <string name="enter_amount">Podaj ilość</string>
+    <string name="passwords_not_match">Hasła są różne</string>
+    <string name="fill_fields">Wypełnij wszyskie pola</string>
+    <string name="successful_registration">Udało Ci się zarejestrować :)</string>
+    <string name="successful_login">Zalogowałeś się</string>
+</resources>
