@@ -8,7 +8,8 @@ The application was create using:
 <br/>-Firebase
 <br/>-Timber
 <br/>-Glide
-<br/>
+
+
 ---
 ## Login and Registration
 
