@@ -1,13 +1,13 @@
 # virtual-fridge
 An MVVM application to save products in virtual fridge, searching for recipes and save them in the database.
 The application was create using:
-# -https://pixabay.com/ - an Api for image searching
-# -https://spoonacular.com/ - an Api to receipe searching
-# -Room
-# -Retrofit
-# -Firebase
-# -Timber
-# -Glide
+\n-https://pixabay.com/ - an Api for image searching
+\n-https://spoonacular.com/ - an Api to receipe searching
+\n-Room
+\n-Retrofit
+\n-Firebase
+\n-Timber
+\n-Glide
 
 ![dialog](https://user-images.githubusercontent.com/85635492/141696883-21da6b81-b1cc-42b5-8852-a2d1f238970b.jpg)
 ![fridge](https://user-images.githubusercontent.com/85635492/141696885-4790835b-27c5-4ad2-8892-d0882303c366.jpg)
