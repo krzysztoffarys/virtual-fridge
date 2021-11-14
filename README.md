@@ -9,7 +9,7 @@ The application was create using:
 <br/>-Timber
 <br/>-Glide
 <br/>
-Login and Registration
+<h1>Login and Registration</h1>
 ![login](https://user-images.githubusercontent.com/85635492/141696886-7ef8beed-594f-463a-adda-a9e82edf4467.jpg)
 ![register](https://user-images.githubusercontent.com/85635492/141696887-a67a7eb8-6963-4dc0-af35-6e0443082128.jpg)
 Product list
